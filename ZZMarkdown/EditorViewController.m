@@ -79,6 +79,10 @@
 
 #pragma mark - view texts
 
+- (void)dealloc {
+    NSLog(@"dealloc %@", self.className);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
