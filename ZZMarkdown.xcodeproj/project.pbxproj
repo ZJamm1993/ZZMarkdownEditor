@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		066DAC40215A09140026C1F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC3F215A09140026C1F8 /* AppDelegate.m */; };
-		066DAC43215A09140026C1F8 /* EditerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC42215A09140026C1F8 /* EditerViewController.m */; };
+		066DAC43215A09140026C1F8 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC42215A09140026C1F8 /* EditorViewController.m */; };
 		066DAC45215A09160026C1F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC44215A09160026C1F8 /* Assets.xcassets */; };
 		066DAC48215A09160026C1F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC46215A09160026C1F8 /* Main.storyboard */; };
 		066DAC4B215A09160026C1F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC4A215A09160026C1F8 /* main.m */; };
@@ -24,8 +24,8 @@
 		066DAC3B215A09140026C1F8 /* ZZMarkdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZMarkdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		066DAC3E215A09140026C1F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		066DAC3F215A09140026C1F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		066DAC41215A09140026C1F8 /* EditerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditerViewController.h; sourceTree = "<group>"; };
-		066DAC42215A09140026C1F8 /* EditerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditerViewController.m; sourceTree = "<group>"; };
+		066DAC41215A09140026C1F8 /* EditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
+		066DAC42215A09140026C1F8 /* EditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
 		066DAC44215A09160026C1F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		066DAC47215A09160026C1F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		066DAC49215A09160026C1F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 				066DAC55215A18B90026C1F8 /* js */,
 				066DAC3E215A09140026C1F8 /* AppDelegate.h */,
 				066DAC3F215A09140026C1F8 /* AppDelegate.m */,
-				066DAC41215A09140026C1F8 /* EditerViewController.h */,
-				066DAC42215A09140026C1F8 /* EditerViewController.m */,
+				066DAC41215A09140026C1F8 /* EditorViewController.h */,
+				066DAC42215A09140026C1F8 /* EditorViewController.m */,
 				066DAC44215A09160026C1F8 /* Assets.xcassets */,
 				066DAC46215A09160026C1F8 /* Main.storyboard */,
 				066DAC49215A09160026C1F8 /* Info.plist */,
@@ -184,7 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				066DAC43215A09140026C1F8 /* EditerViewController.m in Sources */,
+				066DAC43215A09140026C1F8 /* EditorViewController.m in Sources */,
 				066DAC4B215A09160026C1F8 /* main.m in Sources */,
 				066DAC40215A09140026C1F8 /* AppDelegate.m in Sources */,
 			);

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "EditerViewController.h"
+#import "EditorViewController.h"
 
 @interface AppDelegate ()
 
@@ -36,16 +36,16 @@
         if (result == NSModalResponseOK) {
             NSURL *first = panel.URLs.firstObject;
             NSLog(@"%@", first);
-            NSWindowController *editerWC = [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialController];
-            [(EditerViewController *)(editerWC.contentViewController) openFileUrl:first];
-            [editerWC showWindow:nil];
+            NSWindowController *EditorWC = [EditorViewController defaultEditorWindowController];
+            [(EditorViewController *)(EditorWC.contentViewController) openFileUrl:first];
+            [EditorWC showWindow:nil];
         }
     }];
 }
 
 - (void)newDocument:(id)sender {
-    NSWindowController *editerWC = [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateInitialController];
-    [editerWC showWindow:nil];
+    NSWindowController *EditorWC = [EditorViewController defaultEditorWindowController];
+    [EditorWC showWindow:nil];
 }
 
 @end

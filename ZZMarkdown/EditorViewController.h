@@ -1,5 +1,5 @@
 //
-//  EditerViewController.h
+//  EditorViewController.h
 //  IE-mac
 //
 //  Created by dabby on 2018/9/25.
@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface EditerViewController : NSViewController
+@interface EditorViewController : NSViewController
+
++ (NSWindowController *)defaultEditorWindowController;
 
 - (void)openFileUrl:(NSURL *)url;
 

@@ -1,27 +1,31 @@
 //
-//  EditerViewController.m
+//  EditorViewController.m
 //  IE-mac
 //
 //  Created by dabby on 2018/9/25.
 //  Copyright © 2018年 Jam. All rights reserved.
 //
 
-#import "EditerViewController.h"
+#import "EditorViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface EditerViewController()<WKNavigationDelegate>
+@interface EditorViewController()<WKNavigationDelegate>
 
 @property (nonatomic, strong) NSURL *fileURL;
 @property (nonatomic, assign, readonly) BOOL edited;
 
 @end
 
-@implementation EditerViewController {
+@implementation EditorViewController {
     
     __weak IBOutlet WKWebView *webView;
     __unsafe_unretained IBOutlet NSTextView *textView;
     
-    NSString *originFileContent;
+    NSString *lastFileContent;
+}
+
++ (NSWindowController *)defaultEditorWindowController {
+    return [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"EditorWindowController"];
 }
 
 #pragma mark - file urls
@@ -31,34 +35,46 @@
     [self somethingDidChanged];
 }
 
+- (void)openFileUrl:(NSURL *)url {
+    self.fileURL = url;
+    NSError *error;
+    NSString *fileContent = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+    if (!error) {
+        textView.string = [fileContent copy];
+        lastFileContent = [fileContent copy];
+        [self performSelector:@selector(analyseString:) withObject:fileContent afterDelay:1];
+    } else {
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+        [self.view.window performSelector:@selector(performClose:) withObject:nil afterDelay:0];
+    }
+}
+
+- (void)saveFileUrl:(NSURL *)url {
+    self.fileURL = url;
+    lastFileContent = [textView.string copy];
+    
+    [lastFileContent writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+    [self somethingDidChanged];
+}
+
+#pragma mark - edit state
+
 - (void)somethingDidChanged {
     NSWindow *win = [self.view window];
     NSURL *url = self.fileURL;
-    win.title = url ? [url.absoluteString stringByRemovingPercentEncoding] : @"未命名.md";
+    win.title = url ? [url.absoluteString.lastPathComponent stringByRemovingPercentEncoding] : @"未命名.md";
     if (self.edited) {
         win.title = [NSString stringWithFormat:@"(已编辑)%@", win.title];
     }
 }
 
-- (void)openFileUrl:(NSURL *)url {
-    self.fileURL = url;
-    NSString *fileContent = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    self->textView.string = [fileContent copy];
-    self->originFileContent = [fileContent copy];
-    [self performSelector:@selector(analyseString:) withObject:fileContent afterDelay:1];
-}
-
-- (void)saveFileUrl:(NSURL *)url {
-    self.fileURL = url;
-    originFileContent = [textView.string copy];
-    
-    [originFileContent writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-    [self somethingDidChanged];
-}
-
 - (BOOL)edited {
-    return ![textView.string isEqualToString:originFileContent];
+    if (textView.string.length == 0 && lastFileContent.length == 0) {
+        return NO;
+    }
+    return ![textView.string isEqualToString:lastFileContent];
 }
 
 #pragma mark - view texts
@@ -116,17 +132,17 @@
 #pragma mark - document saving
 
 - (void)saveDocument:(id)sender {
-    __weak EditerViewController *editerVC = self;
-    NSLog(@"save URL: %@", editerVC.fileURL);
-    if (editerVC.fileURL) {
-        [editerVC saveFileUrl:editerVC.fileURL];
+    __weak EditorViewController *EditorVC = self;
+    NSLog(@"save URL: %@", EditorVC.fileURL);
+    if (EditorVC.fileURL) {
+        [EditorVC saveFileUrl:EditorVC.fileURL];
     } else {
         NSSavePanel *savePanel = [NSSavePanel savePanel];
         savePanel.allowedFileTypes = @[@"md"];
         savePanel.allowsOtherFileTypes = NO;
         [savePanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
             if (result == NSModalResponseOK) {
-                [editerVC saveFileUrl:savePanel.URL];
+                [EditorVC saveFileUrl:savePanel.URL];
             }
         }];
     }

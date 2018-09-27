@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <plugIn identifier="com.apple.WebKit2IBPlugin" version="14113"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -72,9 +71,6 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="q40-ja-krV"/>
-                                        <menuItem title="Item" id="AUK-vM-bJK">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
                                         <menuItem title="Close" keyEquivalent="w" id="Btx-L0-Ktb">
                                             <connections>
                                                 <action selector="performClose:" target="Ady-hI-5gd" id="jqq-0I-m9x"/>
@@ -138,6 +134,9 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Window" id="qQP-mG-DUK">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
@@ -153,11 +152,11 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <windowController storyboardIdentifier="EditorWindowController" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="200" height="150"/>
+                        <rect key="contentRect" x="169" y="199" width="200" height="150"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="640" height="480"/>
                         <connections>
@@ -168,67 +167,73 @@
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
-                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Editer View Controller-->
+        <!--Editor View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="EditerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditorViewController" id="XfG-lQ-9wD" customClass="EditorViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="293" height="230"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sc-EP-ILq">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
-                                <clipView key="contentView" id="Xix-x4-s9y">
-                                    <rect key="frame" x="1" y="1" width="83" height="148"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="71g-dU-SXK">
-                                            <rect key="frame" x="0.0" y="0.0" width="83" height="148"/>
+                            <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0tj-Ne-iXV">
+                                <rect key="frame" x="0.0" y="0.0" width="293" height="230"/>
+                                <subviews>
+                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="2sc-EP-ILq">
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="230"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <clipView key="contentView" id="Xix-x4-s9y">
+                                            <rect key="frame" x="1" y="1" width="130" height="228"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="71g-dU-SXK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="228"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <size key="minSize" width="130" height="228"/>
+                                                    <size key="maxSize" width="623" height="10000000"/>
+                                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="XfG-lQ-9wD" id="gqL-N1-Hso"/>
+                                                    </connections>
+                                                </textView>
+                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="83" height="148"/>
-                                            <size key="maxSize" width="623" height="10000000"/>
-                                            <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="gqL-N1-Hso"/>
-                                            </connections>
-                                        </textView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="gUF-Bj-V36">
-                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="tm3-6X-xQc">
-                                    <rect key="frame" x="84" y="1" width="15" height="148"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
-                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n2s-L1-tqY">
-                                <rect key="frame" x="100" y="0.0" width="100" height="150"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                                <connections>
-                                    <outlet property="navigationDelegate" destination="XfG-lQ-9wD" id="Le8-cE-kCQ"/>
-                                </connections>
-                            </wkWebView>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="gUF-Bj-V36">
+                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="tm3-6X-xQc">
+                                            <rect key="frame" x="131" y="1" width="15" height="228"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <wkWebView wantsLayer="YES" fixedFrame="YES" id="n2s-L1-tqY">
+                                        <rect key="frame" x="148" y="0.0" width="145" height="230"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                        <connections>
+                                            <outlet property="navigationDelegate" destination="XfG-lQ-9wD" id="Le8-cE-kCQ"/>
+                                        </connections>
+                                    </wkWebView>
+                                </subviews>
+                                <holdingPriorities>
+                                    <real value="250"/>
+                                    <real value="250"/>
+                                </holdingPriorities>
+                            </splitView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="2sc-EP-ILq" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" id="Hqx-lb-pJi"/>
-                            <constraint firstAttribute="bottom" secondItem="2sc-EP-ILq" secondAttribute="bottom" id="Nl6-9l-Hb4"/>
-                            <constraint firstAttribute="bottom" secondItem="n2s-L1-tqY" secondAttribute="bottom" id="NuW-eZ-w4L"/>
-                            <constraint firstItem="2sc-EP-ILq" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Yuk-Or-sLA"/>
-                            <constraint firstItem="n2s-L1-tqY" firstAttribute="leading" secondItem="2sc-EP-ILq" secondAttribute="trailing" id="jLP-zT-JFZ"/>
-                            <constraint firstItem="n2s-L1-tqY" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="s1k-e5-0Lk"/>
-                            <constraint firstAttribute="trailing" secondItem="n2s-L1-tqY" secondAttribute="trailing" id="sfj-02-p50"/>
-                            <constraint firstItem="2sc-EP-ILq" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="xJR-3b-2Q4"/>
+                            <constraint firstItem="0tj-Ne-iXV" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="9rd-XB-krs"/>
+                            <constraint firstAttribute="bottom" secondItem="0tj-Ne-iXV" secondAttribute="bottom" id="aWG-ms-6yJ"/>
+                            <constraint firstAttribute="trailing" secondItem="0tj-Ne-iXV" secondAttribute="trailing" id="fzT-jT-9Wi"/>
+                            <constraint firstItem="0tj-Ne-iXV" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="zDy-dq-oPy"/>
                         </constraints>
                     </view>
                     <connections>
@@ -238,7 +243,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="517"/>
+            <point key="canvasLocation" x="76" y="610"/>
         </scene>
     </scenes>
 </document>
