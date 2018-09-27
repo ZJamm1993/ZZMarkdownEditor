@@ -8,23 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		066DAC40215A09140026C1F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC3F215A09140026C1F8 /* AppDelegate.m */; };
-		066DAC43215A09140026C1F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC42215A09140026C1F8 /* ViewController.m */; };
+		066DAC43215A09140026C1F8 /* EditerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC42215A09140026C1F8 /* EditerViewController.m */; };
 		066DAC45215A09160026C1F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC44215A09160026C1F8 /* Assets.xcassets */; };
 		066DAC48215A09160026C1F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC46215A09160026C1F8 /* Main.storyboard */; };
 		066DAC4B215A09160026C1F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC4A215A09160026C1F8 /* main.m */; };
+		066DAC5B215A19370026C1F8 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC5A215A19370026C1F8 /* test.html */; };
+		066DAC5E215A1DE40026C1F8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066DAC5D215A1DE40026C1F8 /* WebKit.framework */; };
+		066DAC61215A2F5A0026C1F8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066DAC60215A2F5A0026C1F8 /* JavaScriptCore.framework */; };
+		066DAC67215A396A0026C1F8 /* base64.js in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC66215A396A0026C1F8 /* base64.js */; };
+		066DAC6B215B198B0026C1F8 /* github-markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC6A215B198B0026C1F8 /* github-markdown.css */; };
+		066DAC6D215B21FF0026C1F8 /* marked.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC6C215B21FF0026C1F8 /* marked.min.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		066DAC3B215A09140026C1F8 /* IE-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IE-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		066DAC3B215A09140026C1F8 /* ZZMarkdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZMarkdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		066DAC3E215A09140026C1F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		066DAC3F215A09140026C1F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		066DAC41215A09140026C1F8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		066DAC42215A09140026C1F8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		066DAC41215A09140026C1F8 /* EditerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditerViewController.h; sourceTree = "<group>"; };
+		066DAC42215A09140026C1F8 /* EditerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditerViewController.m; sourceTree = "<group>"; };
 		066DAC44215A09160026C1F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		066DAC47215A09160026C1F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		066DAC49215A09160026C1F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		066DAC4A215A09160026C1F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		066DAC4C215A09160026C1F8 /* IE_mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IE_mac.entitlements; sourceTree = "<group>"; };
+		066DAC5A215A19370026C1F8 /* test.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		066DAC5D215A1DE40026C1F8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		066DAC60215A2F5A0026C1F8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		066DAC66215A396A0026C1F8 /* base64.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = base64.js; sourceTree = "<group>"; };
+		066DAC6A215B198B0026C1F8 /* github-markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-markdown.css"; sourceTree = "<group>"; };
+		066DAC6C215B21FF0026C1F8 /* marked.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = marked.min.js; sourceTree = "<group>"; };
+		066DAC6E215B2E260026C1F8 /* ZZMarkdown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZZMarkdown.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +44,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				066DAC61215A2F5A0026C1F8 /* JavaScriptCore.framework in Frameworks */,
+				066DAC5E215A1DE40026C1F8 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,41 +55,63 @@
 		066DAC32215A09140026C1F8 = {
 			isa = PBXGroup;
 			children = (
-				066DAC3D215A09140026C1F8 /* IE-mac */,
+				066DAC3D215A09140026C1F8 /* ZZMarkdown */,
 				066DAC3C215A09140026C1F8 /* Products */,
+				066DAC5C215A1DE40026C1F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		066DAC3C215A09140026C1F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				066DAC3B215A09140026C1F8 /* IE-mac.app */,
+				066DAC3B215A09140026C1F8 /* ZZMarkdown.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		066DAC3D215A09140026C1F8 /* IE-mac */ = {
+		066DAC3D215A09140026C1F8 /* ZZMarkdown */ = {
 			isa = PBXGroup;
 			children = (
+				066DAC6E215B2E260026C1F8 /* ZZMarkdown.entitlements */,
+				066DAC55215A18B90026C1F8 /* js */,
 				066DAC3E215A09140026C1F8 /* AppDelegate.h */,
 				066DAC3F215A09140026C1F8 /* AppDelegate.m */,
-				066DAC41215A09140026C1F8 /* ViewController.h */,
-				066DAC42215A09140026C1F8 /* ViewController.m */,
+				066DAC41215A09140026C1F8 /* EditerViewController.h */,
+				066DAC42215A09140026C1F8 /* EditerViewController.m */,
 				066DAC44215A09160026C1F8 /* Assets.xcassets */,
 				066DAC46215A09160026C1F8 /* Main.storyboard */,
 				066DAC49215A09160026C1F8 /* Info.plist */,
 				066DAC4A215A09160026C1F8 /* main.m */,
-				066DAC4C215A09160026C1F8 /* IE_mac.entitlements */,
 			);
-			path = "IE-mac";
+			path = ZZMarkdown;
+			sourceTree = "<group>";
+		};
+		066DAC55215A18B90026C1F8 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				066DAC66215A396A0026C1F8 /* base64.js */,
+				066DAC6A215B198B0026C1F8 /* github-markdown.css */,
+				066DAC6C215B21FF0026C1F8 /* marked.min.js */,
+				066DAC5A215A19370026C1F8 /* test.html */,
+			);
+			path = js;
+			sourceTree = "<group>";
+		};
+		066DAC5C215A1DE40026C1F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				066DAC60215A2F5A0026C1F8 /* JavaScriptCore.framework */,
+				066DAC5D215A1DE40026C1F8 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		066DAC3A215A09140026C1F8 /* IE-mac */ = {
+		066DAC3A215A09140026C1F8 /* ZZMarkdown */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 066DAC4F215A09160026C1F8 /* Build configuration list for PBXNativeTarget "IE-mac" */;
+			buildConfigurationList = 066DAC4F215A09160026C1F8 /* Build configuration list for PBXNativeTarget "ZZMarkdown" */;
 			buildPhases = (
 				066DAC37215A09140026C1F8 /* Sources */,
 				066DAC38215A09140026C1F8 /* Frameworks */,
@@ -85,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = "IE-mac";
+			name = ZZMarkdown;
 			productName = "IE-mac";
-			productReference = 066DAC3B215A09140026C1F8 /* IE-mac.app */;
+			productReference = 066DAC3B215A09140026C1F8 /* ZZMarkdown.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -101,10 +137,15 @@
 				TargetAttributes = {
 					066DAC3A215A09140026C1F8 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = 066DAC36215A09140026C1F8 /* Build configuration list for PBXProject "IE-mac" */;
+			buildConfigurationList = 066DAC36215A09140026C1F8 /* Build configuration list for PBXProject "ZZMarkdown" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -117,7 +158,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				066DAC3A215A09140026C1F8 /* IE-mac */,
+				066DAC3A215A09140026C1F8 /* ZZMarkdown */,
 			);
 		};
 /* End PBXProject section */
@@ -127,8 +168,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				066DAC67215A396A0026C1F8 /* base64.js in Resources */,
 				066DAC45215A09160026C1F8 /* Assets.xcassets in Resources */,
+				066DAC6D215B21FF0026C1F8 /* marked.min.js in Resources */,
 				066DAC48215A09160026C1F8 /* Main.storyboard in Resources */,
+				066DAC5B215A19370026C1F8 /* test.html in Resources */,
+				066DAC6B215B198B0026C1F8 /* github-markdown.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				066DAC43215A09140026C1F8 /* ViewController.m in Sources */,
+				066DAC43215A09140026C1F8 /* EditerViewController.m in Sources */,
 				066DAC4B215A09160026C1F8 /* main.m in Sources */,
 				066DAC40215A09140026C1F8 /* AppDelegate.m in Sources */,
 			);
@@ -272,15 +317,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "IE-mac/IE_mac.entitlements";
+				CODE_SIGN_ENTITLEMENTS = ZZMarkdown/ZZMarkdown.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "IE-mac/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ZZMarkdown/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jamStudio.IE-mac";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamStudio.markdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -289,15 +334,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "IE-mac/IE_mac.entitlements";
+				CODE_SIGN_ENTITLEMENTS = ZZMarkdown/ZZMarkdown.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "IE-mac/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ZZMarkdown/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.jamStudio.IE-mac";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamStudio.markdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -305,7 +350,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		066DAC36215A09140026C1F8 /* Build configuration list for PBXProject "IE-mac" */ = {
+		066DAC36215A09140026C1F8 /* Build configuration list for PBXProject "ZZMarkdown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				066DAC4D215A09160026C1F8 /* Debug */,
@@ -314,7 +359,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		066DAC4F215A09160026C1F8 /* Build configuration list for PBXNativeTarget "IE-mac" */ = {
+		066DAC4F215A09160026C1F8 /* Build configuration list for PBXNativeTarget "ZZMarkdown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				066DAC50215A09160026C1F8 /* Debug */,

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:IE-mac.xcodeproj">
+      location = "self:/Users/dabby/Documents/IE-mac/ZZMarkdown.xcodeproj">
    </FileRef>
 </Workspace>

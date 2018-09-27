@@ -1,0 +1,27 @@
+<html>
+    <head>
+    	<meta charset="UTF-8">
+        <script type="text/javascript" src="marked.min.js"></script>
+        <script type="text/javascript" src="base64.js"></script>
+        <link rel="stylesheet" type="text/css" media="screen" href="github-markdown.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+	<body>
+        <div>
+            <a href="https://www.baidu.com">去百度</a>
+            </div>
+		<div id="result" class="markdown-body"></div>
+        
+<script type="text/javascript">
+    var b64 = new Base64();
+    function convert(text){
+        var str = b64.decode(text);
+        var html = marked(str);
+        document.getElementById("result").innerHTML = html;
+    }
+</script>
+
+	</body>
+</html>
+
+
