@@ -25,9 +25,9 @@
     // Insert code here to tear down your application
 }
 
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
-    return YES;
-}
+//- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+//    return YES;
+//}
 
 #pragma mark - menu action
 
@@ -41,6 +41,13 @@
         if (result == NSModalResponseOK) {
             NSURL *first = panel.URLs.firstObject;
             NSLog(@"%@", first);
+            NSError *error;
+            [NSString stringWithContentsOfURL:first encoding:NSUTF8StringEncoding error:&error];
+            if (error) {
+                NSAlert *alert = [NSAlert alertWithError:error];
+                [alert runModal];
+                return;
+            }
             NSWindowController *EditorWC = [EditorViewController defaultEditorWindowController];
             [(EditorViewController *)(EditorWC.contentViewController) openFileUrl:first];
             [EditorWC showWindow:nil];

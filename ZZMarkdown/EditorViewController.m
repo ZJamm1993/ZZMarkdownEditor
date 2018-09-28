@@ -9,7 +9,7 @@
 #import "EditorViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface EditorViewController()<WKNavigationDelegate>
+@interface EditorViewController()<WKNavigationDelegate, NSWindowDelegate>
 
 @property (nonatomic, strong) NSURL *fileURL;
 @property (nonatomic, assign, readonly) BOOL edited;
@@ -28,6 +28,26 @@
     return [[NSStoryboard storyboardWithName:@"Main" bundle:nil] instantiateControllerWithIdentifier:@"EditorWindowController"];
 }
 
+- (void)dealloc {
+    NSLog(@"dealloc %@", self.className);
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    textView.automaticQuoteSubstitutionEnabled = NO;
+    textView.automaticDashSubstitutionEnabled = NO;
+    textView.font = [NSFont systemFontOfSize:15];
+    
+    [self loadHtmlString];
+    // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear {
+    [self somethingDidChanged];
+    self.view.window.delegate =self;
+}
+
 #pragma mark - file urls
 
 - (void)setFileURL:(NSURL *)fileURL {
@@ -39,19 +59,15 @@
     self.fileURL = url;
     NSError *error;
     NSString *fileContent = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
-    if (!error) {
-        textView.string = [fileContent copy];
-        lastFileContent = [fileContent copy];
-        [self performSelector:@selector(analyseString:) withObject:fileContent afterDelay:1];
-    } else {
-        NSAlert *alert = [NSAlert alertWithError:error];
-        [alert runModal];
-        [self.view.window performSelector:@selector(performClose:) withObject:nil afterDelay:0];
-    }
+    textView.string = [fileContent copy];
+    lastFileContent = [fileContent copy];
+    [self performSelector:@selector(analyseString:) withObject:fileContent afterDelay:1];
 }
 
 - (void)saveFileUrl:(NSURL *)url {
-    self.fileURL = url;
+    if (self.fileURL == nil) {
+        self.fileURL = url;
+    }
     lastFileContent = [textView.string copy];
     
     [lastFileContent writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -64,9 +80,9 @@
 - (void)somethingDidChanged {
     NSWindow *win = [self.view window];
     NSURL *url = self.fileURL;
-    win.title = url ? [url.absoluteString.lastPathComponent stringByRemovingPercentEncoding] : @"未命名.md";
+    win.title = url ? [url.lastPathComponent stringByRemovingPercentEncoding] : @"Untitled.md";
     if (self.edited) {
-        win.title = [NSString stringWithFormat:@"(已编辑)%@", win.title];
+        win.title = [NSString stringWithFormat:@"* %@", win.title];
     }
 }
 
@@ -78,25 +94,6 @@
 }
 
 #pragma mark - view texts
-
-- (void)dealloc {
-    NSLog(@"dealloc %@", self.className);
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    textView.automaticQuoteSubstitutionEnabled = NO;
-    textView.automaticDashSubstitutionEnabled = NO;
-    textView.font = [NSFont systemFontOfSize:15];
-
-    [self loadHtmlString];
-    // Do any additional setup after loading the view.
-}
-
-- (void)viewDidAppear {
-    [self somethingDidChanged];
-}
 
 - (void)loadHtmlString {
     NSString *currentPath = [[NSBundle mainBundle] bundlePath];
@@ -121,6 +118,26 @@
     }];
 }
 
+#pragma mark - Window delegate
+
+- (BOOL)windowShouldClose:(NSWindow *)sender {
+    if (self.edited) {
+        // please save first
+        [self showSavePanelCompletionHandler:^(NSModalResponse result, NSURL *url) {
+            if (result == NSModalResponseCancel) {
+                
+            } else {
+                if (result == NSModalResponseOK) {
+                    [self saveFileUrl:url];
+                }
+                [self.view.window close];
+            }
+        }];
+        return NO;
+    }
+    return YES;
+}
+
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
@@ -136,21 +153,41 @@
 #pragma mark - document saving
 
 - (void)saveDocument:(id)sender {
-    __weak EditorViewController *EditorVC = self;
-    NSLog(@"save URL: %@", EditorVC.fileURL);
-    if (EditorVC.fileURL) {
-        [EditorVC saveFileUrl:EditorVC.fileURL];
+    if (self.fileURL) {
+        [self saveFileUrl:self.fileURL];
     } else {
-        NSSavePanel *savePanel = [NSSavePanel savePanel];
-        savePanel.allowedFileTypes = @[@"md"];
-        savePanel.allowsOtherFileTypes = NO;
-        [savePanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
-            if (result == NSModalResponseOK) {
-                [EditorVC saveFileUrl:savePanel.URL];
-            }
-        }];
+        [self saveDocumentAs:sender];
     }
 }
 
+- (void)saveDocumentAs:(id)sender {
+//    BOOL isAs = [NSStringFromSelector([(NSMenuItem *)sender action]) isEqualToString:@"saveDocumentAs:"] ;
+    
+    __weak EditorViewController *EditorVC = self;
+    
+    [self showSavePanelCompletionHandler:^(NSModalResponse result, NSURL *url) {
+        if (result == NSModalResponseOK) {
+            [EditorVC saveFileUrl:url];
+        }
+    }];
+}
+
+- (void)showSavePanelCompletionHandler:(void (^)(NSModalResponse result, NSURL *url))handler {
+    NSSavePanel *savePanel = [NSSavePanel savePanel];
+    savePanel.allowedFileTypes = @[@"md"];
+    savePanel.allowsOtherFileTypes = NO;
+    if (self.fileURL) {
+        NSMutableArray *pathComponents = [[self.fileURL pathComponents] mutableCopy];;
+        [pathComponents removeLastObject];
+        savePanel.directoryURL = [NSURL fileURLWithPathComponents:pathComponents];
+        savePanel.nameFieldStringValue = [self.fileURL lastPathComponent];
+    }
+    [savePanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
+        NSLog(@"save: %@", savePanel.URL);
+        if (handler) {
+            handler(result, savePanel.URL);
+        }
+    }];
+}
 
 @end

@@ -56,29 +56,37 @@
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="File" id="aJm-oj-mom">
+                            <menuItem title="File" id="YXC-os-z41">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="File" id="NE6-3R-zsW">
+                                <menu key="submenu" title="File" id="eRm-gf-xRh">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="36y-oH-XcD">
+                                        <menuItem title="New" keyEquivalent="n" id="OBR-i7-4FA">
                                             <connections>
-                                                <action selector="newDocument:" target="Ady-hI-5gd" id="Bbw-hL-fAI"/>
+                                                <action selector="newDocument:" target="Ady-hI-5gd" id="MmM-4V-xHu"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open…" keyEquivalent="o" id="jAb-LL-cwJ">
+                                        <menuItem title="Open…" keyEquivalent="o" id="WMK-bi-tob">
                                             <connections>
-                                                <action selector="openDocument:" target="Ady-hI-5gd" id="EFS-5D-cNN"/>
+                                                <action selector="openDocument:" target="Ady-hI-5gd" id="tOj-ji-DaZ"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="q40-ja-krV"/>
-                                        <menuItem title="Close" keyEquivalent="w" id="Btx-L0-Ktb">
+                                        <menuItem title="Open Recent" id="WN1-QA-vi4">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="2nj-J8-XUr"/>
+                                        <menuItem title="Close" keyEquivalent="w" id="DIN-Ag-26a">
                                             <connections>
-                                                <action selector="performClose:" target="Ady-hI-5gd" id="jqq-0I-m9x"/>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="s6n-fw-LbB"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Save" keyEquivalent="s" id="gj2-xH-fyo">
+                                        <menuItem title="Save" keyEquivalent="s" id="lc7-Pb-A1L">
                                             <connections>
-                                                <action selector="saveDocument:" target="Ady-hI-5gd" id="8Ew-I3-yBd"/>
+                                                <action selector="saveDocument:" target="Ady-hI-5gd" id="Rg3-QB-9b3"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Save As…" keyEquivalent="S" id="fov-Ut-ptr">
+                                            <connections>
+                                                <action selector="saveDocumentAs:" target="Ady-hI-5gd" id="hDE-jV-h94"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -154,14 +162,11 @@
             <objects>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <windowController storyboardIdentifier="EditorWindowController" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="169" y="199" width="200" height="150"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="640" height="480"/>
-                        <connections>
-                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
-                        </connections>
+                        <value key="minSize" type="size" width="800" height="600"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -181,18 +186,18 @@
                             <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0tj-Ne-iXV">
                                 <rect key="frame" x="0.0" y="0.0" width="293" height="230"/>
                                 <subviews>
-                                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="2sc-EP-ILq">
+                                    <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="2sc-EP-ILq">
                                         <rect key="frame" x="0.0" y="0.0" width="147" height="230"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <clipView key="contentView" id="Xix-x4-s9y">
-                                            <rect key="frame" x="1" y="1" width="130" height="228"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="132" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="71g-dU-SXK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="228"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="132" height="230"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="130" height="228"/>
+                                                    <size key="minSize" width="132" height="230"/>
                                                     <size key="maxSize" width="623" height="10000000"/>
                                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <connections>
@@ -200,14 +205,13 @@
                                                     </connections>
                                                 </textView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="gUF-Bj-V36">
                                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="tm3-6X-xQc">
-                                            <rect key="frame" x="131" y="1" width="15" height="228"/>
+                                            <rect key="frame" x="132" y="0.0" width="15" height="230"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>

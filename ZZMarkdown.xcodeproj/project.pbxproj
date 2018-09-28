@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060469FA215E239D0033D871 /* foundation.css in Resources */ = {isa = PBXBuildFile; fileRef = 060469F9215E239D0033D871 /* foundation.css */; };
+		060469FC215E241C0033D871 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 060469FB215E241C0033D871 /* highlight.min.js */; };
 		066DAC40215A09140026C1F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC3F215A09140026C1F8 /* AppDelegate.m */; };
 		066DAC43215A09140026C1F8 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 066DAC42215A09140026C1F8 /* EditorViewController.m */; };
 		066DAC45215A09160026C1F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 066DAC44215A09160026C1F8 /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		060469F9215E239D0033D871 /* foundation.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = foundation.css; sourceTree = "<group>"; };
+		060469FB215E241C0033D871 /* highlight.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
 		066DAC3B215A09140026C1F8 /* ZZMarkdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZMarkdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		066DAC3E215A09140026C1F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		066DAC3F215A09140026C1F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 			children = (
 				066DAC66215A396A0026C1F8 /* base64.js */,
 				066DAC6A215B198B0026C1F8 /* github-markdown.css */,
+				060469F9215E239D0033D871 /* foundation.css */,
+				060469FB215E241C0033D871 /* highlight.min.js */,
 				066DAC6C215B21FF0026C1F8 /* marked.min.js */,
 				066DAC5A215A19370026C1F8 /* test.html */,
 			);
@@ -171,7 +177,9 @@
 				066DAC67215A396A0026C1F8 /* base64.js in Resources */,
 				066DAC45215A09160026C1F8 /* Assets.xcassets in Resources */,
 				066DAC6D215B21FF0026C1F8 /* marked.min.js in Resources */,
+				060469FA215E239D0033D871 /* foundation.css in Resources */,
 				066DAC48215A09160026C1F8 /* Main.storyboard in Resources */,
+				060469FC215E241C0033D871 /* highlight.min.js in Resources */,
 				066DAC5B215A19370026C1F8 /* test.html in Resources */,
 				066DAC6B215B198B0026C1F8 /* github-markdown.css in Resources */,
 			);

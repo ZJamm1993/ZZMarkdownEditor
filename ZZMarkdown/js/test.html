@@ -3,7 +3,10 @@
     	<meta charset="UTF-8">
         <script type="text/javascript" src="marked.min.js"></script>
         <script type="text/javascript" src="base64.js"></script>
+        <script type="text/javascript" src="highlight.min.js"></script>
+
         <link rel="stylesheet" type="text/css" media="screen" href="github-markdown.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="foundation.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 	<body>
@@ -15,6 +18,8 @@
         var str = b64.decode(text);
         var html = marked(str);
         document.getElementById("result").innerHTML = html;
+        hljs.initHighlighting();
+        hljs.initHighlighting.called = false;
     }
 </script>
 
