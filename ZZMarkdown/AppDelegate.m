@@ -17,7 +17,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    [self newDocument:nil];
+//    [self newDocument:nil];
 }
 
 
@@ -25,9 +25,27 @@
     // Insert code here to tear down your application
 }
 
-//- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
-//    return YES;
-//}
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls {
+    NSURL *first = urls.firstObject;
+//    if (!first) {
+//        return;
+//    }
+//    NSArray *windows = application.windows;
+//    for (NSWindow *win in windows) {
+//        if (win.) {
+//            statements
+//        }
+//        EditorViewController *edvc = (id)win.contentViewController;
+//        if ([edvc isKindOfClass:EditorViewController.class]) {
+//            if ([edvc.fileURL.absoluteString isEqualToString:first.absoluteString]) {
+//                return;
+//            }
+//        }
+//    }
+    NSWindowController *EditorWC = [EditorViewController defaultEditorWindowController];
+    [(EditorViewController *)(EditorWC.contentViewController) openFileUrl:first];
+    [EditorWC showWindow:nil];
+}
 
 #pragma mark - menu action
 

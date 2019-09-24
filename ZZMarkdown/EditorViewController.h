@@ -12,6 +12,8 @@
 
 + (NSWindowController *)defaultEditorWindowController;
 
+@property (nonatomic, strong) NSURL *fileURL;
+
 - (void)openFileUrl:(NSURL *)url;
 
 @end

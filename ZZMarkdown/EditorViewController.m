@@ -11,7 +11,6 @@
 
 @interface EditorViewController()<WKNavigationDelegate, NSWindowDelegate>
 
-@property (nonatomic, strong) NSURL *fileURL;
 @property (nonatomic, assign, readonly) BOOL edited;
 
 @end
