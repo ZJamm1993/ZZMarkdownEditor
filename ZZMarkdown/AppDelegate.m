@@ -25,23 +25,28 @@
     // Insert code here to tear down your application
 }
 
+- (void)applicationDidBecomeActive:(NSNotification *)notification {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (NSApplication.sharedApplication.windows.count == 0) {
+            [self newDocument:nil];
+        }
+    });
+}
+
 - (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls {
     NSURL *first = urls.firstObject;
-//    if (!first) {
-//        return;
-//    }
-//    NSArray *windows = application.windows;
-//    for (NSWindow *win in windows) {
-//        if (win.) {
-//            statements
-//        }
-//        EditorViewController *edvc = (id)win.contentViewController;
-//        if ([edvc isKindOfClass:EditorViewController.class]) {
-//            if ([edvc.fileURL.absoluteString isEqualToString:first.absoluteString]) {
-//                return;
-//            }
-//        }
-//    }
+    if (!first) {
+        return;
+    }
+    NSArray *windows = application.windows;
+    for (NSWindow *win in windows) {
+        EditorViewController *edvc = (id)win.contentViewController;
+        if ([edvc isKindOfClass:EditorViewController.class]) {
+            if ([edvc.fileURL.absoluteString isEqualToString:first.absoluteString]) {
+                return;
+            }
+        }
+    }
     NSWindowController *EditorWC = [EditorViewController defaultEditorWindowController];
     [(EditorViewController *)(EditorWC.contentViewController) openFileUrl:first];
     [EditorWC showWindow:nil];

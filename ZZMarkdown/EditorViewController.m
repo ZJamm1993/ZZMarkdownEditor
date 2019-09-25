@@ -121,15 +121,16 @@
 
 - (BOOL)windowShouldClose:(NSWindow *)sender {
     if (self.edited) {
+        __weak typeof(self) weakself = self;
         // please save first
         [self showSavePanelCompletionHandler:^(NSModalResponse result, NSURL *url) {
             if (result == NSModalResponseCancel) {
                 
             } else {
                 if (result == NSModalResponseOK) {
-                    [self saveFileUrl:url];
+                    [weakself saveFileUrl:url];
                 }
-                [self.view.window close];
+                [weakself.view.window close];
             }
         }];
         return NO;
@@ -181,10 +182,11 @@
         savePanel.directoryURL = [NSURL fileURLWithPathComponents:pathComponents];
         savePanel.nameFieldStringValue = [self.fileURL lastPathComponent];
     }
+    __weak typeof(savePanel) weakPanel = savePanel;
     [savePanel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
-        NSLog(@"save: %@", savePanel.URL);
+        NSLog(@"save: %@", weakPanel.URL);
         if (handler) {
-            handler(result, savePanel.URL);
+            handler(result, weakPanel.URL);
         }
     }];
 }
